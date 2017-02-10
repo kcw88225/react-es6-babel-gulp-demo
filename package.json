@@ -1,0 +1,25 @@
+{
+  "name": "message-processor",
+  "version": "1.0.0",
+  "description": "a simple message processor website developed in React",
+  "main": "app.js",
+  "scripts": {
+    "build": "gulp react"
+  },
+  "author": "Kelvin Kong",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.0.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-util": "^3.0.8",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}

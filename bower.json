@@ -1,0 +1,22 @@
+{
+  "name": "message.processor",
+  "authors": [
+    "Kelvin Kong"
+  ],
+  "description": "simple message processor",
+  "main": "",
+  "license": "UNLICENSED",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-datepicker": "^1.6.4",
+    "jquery": "^3.0.0",
+    "moment": "^2.17.1"
+  }
+}

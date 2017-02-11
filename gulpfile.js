@@ -9,7 +9,7 @@ gulp.task('react', function () {
         entries: './src/app.js',
         debug: true
     })
-    .transform("babelify", { presets: ["es2015", "react"] })
+    .transform("babelify", { presets: ["es2015", "react"], compact: false })
     .bundle()
     .on('error', gutil.log)
     .pipe(source('bundle.js'))

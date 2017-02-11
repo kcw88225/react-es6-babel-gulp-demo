@@ -1,4 +1,9 @@
 import React from 'react';
+import Helper from '../utils/helper';
+
+const selector = {
+    detailDialog: '#msg-detail-cbc-dialog'
+}
 
 export default class MessageDetailModalForCBC extends React.Component {
     constructor(props) {
@@ -10,11 +15,11 @@ export default class MessageDetailModalForCBC extends React.Component {
     }
 
     static openDialog(){
-        $('#msg-detail-cbc-dialog').modal('show');
+        $(selector.detailDialog).modal('show');
     }
 
     static closeDialog(){
-        $('#msg-detail-cbc-dialog').modal('hide');
+        $(selector.detailDialog).modal('hide');
     }
 
     onSubmit(e) {
@@ -35,8 +40,10 @@ export default class MessageDetailModalForCBC extends React.Component {
     }
 
     render() {
+        var dialogSelector = Helper.getSelectorName(selector.detailDialog);
+
         return (
-            <div className="modal fade" id="msg-detail-cbc-dialog" data-msg-id="-1" tabIndex="-1" role="dialog" aria-labelledby="message detail dialog for baby birth" aria-hidden="true">
+            <div className="modal fade" id={dialogSelector} data-msg-id="-1" tabIndex="-1" role="dialog" aria-labelledby="message detail dialog for baby birth" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">

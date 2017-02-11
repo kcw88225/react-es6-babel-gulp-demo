@@ -210,3 +210,6 @@ FakesAssemblies/
 *.opt
 /PaymentGateway/Dumps
 /_CodeCoverageResult.xml
+
+# Visual Studio Code
+.vscode

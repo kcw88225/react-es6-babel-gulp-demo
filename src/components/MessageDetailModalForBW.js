@@ -1,4 +1,9 @@
 import React from 'react';
+import Helper from '../utils/helper'
+
+const selector = {
+    detailDialog: '#msg-detail-bw-dialog'
+}
 
 export default class MessageDetailModalForBW extends React.Component {
     constructor(props) {
@@ -13,11 +18,11 @@ export default class MessageDetailModalForBW extends React.Component {
     }
 
     static openDialog(){
-        $('#msg-detail-bw-dialog').modal('show');
+        $(selector.detailDialog).modal('show');
     }
 
     static closeDialog(){
-        $('#msg-detail-bw-dialog').modal('hide');
+        $(selector.detailDialog).modal('hide');
     }
 
     onSubmit(e) {
@@ -81,8 +86,10 @@ export default class MessageDetailModalForBW extends React.Component {
     }
 
     render() {
+        var dialogSelector = Helper.getSelectorName(selector.detailDialog);
+
         return (
-            <div className="modal fade" id="msg-detail-bw-dialog" data-msg-id="-1" tabIndex="-1" role="dialog" aria-labelledby="message detail dialog for birthday wish" aria-hidden="true">
+            <div className="modal fade" id={dialogSelector} data-msg-id="-1" tabIndex="-1" role="dialog" aria-labelledby="message detail dialog for birthday wish" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">

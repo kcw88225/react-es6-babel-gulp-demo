@@ -5,7 +5,7 @@ Simeple Message Processor with React+ES6
 ## Quick Start
 - run `npm install`
 - run `bower install`
-- run `gulp react`
+- run `gulp deploy`
 
 ## Ref
 - Browse website `index.html`

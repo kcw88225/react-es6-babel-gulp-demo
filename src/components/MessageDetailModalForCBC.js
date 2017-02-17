@@ -1,4 +1,5 @@
 import React from 'react';
+import BabyBrithDatePicker from './form/BabyBrithDatePicker';
 import Helper from '../utils/helper';
 
 const selector = {
@@ -26,16 +27,13 @@ export default class MessageDetailModalForCBC extends React.Component {
     onSubmit(e) {
         let updatedMsgItem = Object.assign({}, this.props.msgItem);
         updatedMsgItem.babyName = $(this.babyNameDdl).val();
-        updatedMsgItem.birthdate = $(this.babyBrithDate).val();
+        updatedMsgItem.birthdate = BabyBrithDatePicker.getBabyBrithDateValue();
 
         this.props.onMessageSubmission(updatedMsgItem);
         this.closeDialog();
     }
 
     componentDidMount(){
-        //set default brith date
-        $(this.babyBrithDate).val(moment().format('MM/DD/YYYY'));
-
         //add default name options
         this.props.babyNameSet.map((babyName) => $(this.babyNameDdl).append($("<option></option>").attr("value", babyName.value).text(babyName.name)));
     }
@@ -59,12 +57,7 @@ export default class MessageDetailModalForCBC extends React.Component {
                                 <select ref={(input) => this.babyNameDdl = input} className="custom-select form-control"></select>
                             </div>
                             <div className="col-sm-8">
-                                <div className="input-group date" data-provide="datepicker">
-                                    <input ref={(input) => this.babyBrithDate = input} type="text" className="form-control" ref={(input) => this.babyBrithDate = input} />
-                                    <div className="input-group-addon">
-                                        <span className="glyphicon glyphicon-th"></span>
-                                    </div>
-                                </div>
+                                <BabyBrithDatePicker />
                             </div>
                         </div>
                     </div>

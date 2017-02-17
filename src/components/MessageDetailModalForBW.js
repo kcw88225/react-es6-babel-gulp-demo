@@ -12,7 +12,7 @@ export default class MessageDetailModalForBW extends React.Component {
 
         this.onSubmit = this.onSubmit.bind(this);
         this.handleGiftSelect = this.handleGiftSelect.bind(this);
-        
+
         this.openDialog = MessageDetailModalForBW.openDialog;
         this.closeDialog = MessageDetailModalForBW.closeDialog;
     }
@@ -68,7 +68,7 @@ export default class MessageDetailModalForBW extends React.Component {
                     <div className="modal-header">
                         <div className="modal-title col-xs-8">Choose a gift<span ref={(span) => this.giftFor = span}></span></div>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">

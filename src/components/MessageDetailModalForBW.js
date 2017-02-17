@@ -1,4 +1,5 @@
 import React from 'react';
+import SelectGiftDdl from './form/SelectGiftDdl'
 import Helper from '../utils/helper'
 
 const selector = {
@@ -10,9 +11,8 @@ export default class MessageDetailModalForBW extends React.Component {
         super(props);
 
         this.onSubmit = this.onSubmit.bind(this);
-        this.addGiftOption = this.addGiftOption.bind(this);
-        this.getSelectedGiftOption = this.getSelectedGiftOption.bind(this);
-        this.onGiftSeltect = this.onGiftSeltect.bind(this);
+        this.handleGiftSelect = this.handleGiftSelect.bind(this);
+        
         this.openDialog = MessageDetailModalForBW.openDialog;
         this.closeDialog = MessageDetailModalForBW.closeDialog;
     }
@@ -26,7 +26,7 @@ export default class MessageDetailModalForBW extends React.Component {
     }
 
     onSubmit(e) {
-        let $selectedOption = this.getSelectedGiftOption(),
+        let $selectedOption = SelectGiftDdl.getSelectedGiftOption(),
             updatedMsgItem = Object.assign({}, this.props.msgItem);
 
         updatedMsgItem.gift = $selectedOption.val();
@@ -36,47 +36,20 @@ export default class MessageDetailModalForBW extends React.Component {
         this.props.onMessageSubmission(updatedMsgItem);
         this.closeDialog();
     }
-
-    onGiftSeltect(e) {
-        let $selectedOption = this.getSelectedGiftOption();
-
-        $(this.selectedGiftImage).attr('src', $selectedOption.data('image')).attr('alt', $selectedOption.val());
-        $(this.selectedGiftDescription).text($selectedOption.data('description'));
-    }
-
-    getSelectedGiftOption(){
-        let $giftDdl = $(this.giftDdl),
-            giftValue = $giftDdl.val();
-
-            return $giftDdl.find('option[value="'+ giftValue + '"]')
-    }
-
-    addGiftOption(gift){
-        $(this.giftDdl).append($('<option></option>')
-                        .attr('value', gift.value)
-                        .attr('data-image', gift.image)
-                        .attr('data-description', gift.description)
-                        .text(gift.name))
-    }
     
+    handleGiftSelect() {
+        let $selectedOption = SelectGiftDdl.getSelectedGiftOption(),
+            giftValue = $selectedOption.val(),
+            giftImageSrc = $selectedOption.data('image'),
+            giftDesc = $selectedOption.data('description');
+
+        $(this.selectedGiftImage).attr('src', giftImageSrc).attr('alt', giftValue);
+        $(this.selectedGiftDescription).text(giftDesc);
+    }
+
     componentDidMount(){
-        const self = this;
-        
-        //add default gift options
-        this.props.giftSet.map((gift) => this.addGiftOption(gift));
-
-        //concat special gift from fake api
-        $.ajax({
-            method: 'GET',
-            url: '/api/specials.js',
-            dataType: 'json'
-        })
-        .done(function( result ) {
-            result.map((gift) => self.addGiftOption(gift));
-        });
-
         //set default gift image and description
-        this.onGiftSeltect();
+        this.handleGiftSelect();
     }
 
     componentDidUpdate(prevProps, prevState){
@@ -100,7 +73,9 @@ export default class MessageDetailModalForBW extends React.Component {
                     </div>
                     <div className="modal-body">
                         <div className="row">
-                            <div className="col-xs-12 margin-bottom"><select ref={(input) => this.giftDdl = input} className="custom-select form-control" onChange={this.onGiftSeltect}></select></div>
+                            <div className="col-xs-12 margin-bottom">
+                                <SelectGiftDdl giftSet={this.props.giftSet} onGiftSeltect={this.handleGiftSelect} />
+                            </div>
                             <img ref={(input) => this.selectedGiftImage = input} className="col-xs-4" width="100" alt="" />
                             <div ref={(input) => this.selectedGiftDescription = input} className="col-xs-8"></div>
                         </div>

@@ -10,6 +10,7 @@ export default class MessageDetailModalForCBC extends React.Component {
         super(props);
 
         this.onSubmit = this.onSubmit.bind(this);
+        
         this.openDialog = MessageDetailModalForCBC.openDialog;
         this.closeDialog = MessageDetailModalForCBC.closeDialog;
     }

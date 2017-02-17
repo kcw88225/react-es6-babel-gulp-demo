@@ -43,6 +43,7 @@ export default class Dashboard extends React.Component {
                 seletedMsgOnModalForBW: msgItem
             };
         });
+        
         MessageDetailModalForBW.openDialog();
     }
 

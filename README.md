@@ -9,7 +9,8 @@ Simeple Message Processor with React+ES6
 - run `npm install`
 - run `bower install`
 - run `gulp deploy`
-- run `json-server --watch api/specials.json` #####start api server at http://localhost:3000
+- run `json-server --watch api/specials.json`
+-- start api server at http://localhost:3000
 
 ## Ref
 - Browse website `index.html`

@@ -1,3 +1,4 @@
+ //run json-server for api endpoint (refer to README.md)
 export const url = {
-    getSpecialGift: '/api/specials.js'
+    getSpecialGift: 'http://localhost:3000/specials'
 };

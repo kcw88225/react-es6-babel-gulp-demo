@@ -39,10 +39,6 @@ gulp.task('react', function () {
     .pipe(gulp.dest(paths.jsDest));
 });
 
-gulp.task('watch:react', function () {
-    gulp.watch(['./src/**/*.js'], ['react']);
-});
-
 //Bundling and minification for thrid party JS
 gulp.task('min:js', function () {
     return gulp.src(vendorJsSrc)
@@ -67,3 +63,8 @@ gulp.task('copy:font', function () {
 
 //Deploy task
 gulp.task('deploy', ['react', 'min:js', 'min:css', 'copy:font']);
+
+//Watch Development
+gulp.task('watch', function () {
+    gulp.watch(['./src/**/*.js'], ['deploy']);
+});
